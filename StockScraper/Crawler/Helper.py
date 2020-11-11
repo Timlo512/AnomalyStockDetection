@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
+import json
 
 def calendar_click(browser, to_search, class_name):
     
@@ -67,4 +68,14 @@ def scraper(browser, stock_code, date_to_search):
     df['report_date'] = date_to_search
     
     return df
+
+def get_stock_codes(path):
+    """
+        Read Json file
+        return a list of stock cod 
+    """
+    with open(path, 'r') as f:
+        stock_dict = json.load(f)
+        
+    return list(stock_dict.values())
     
