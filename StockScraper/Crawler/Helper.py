@@ -2,6 +2,8 @@ import time
 import pandas as pd
 import numpy as np
 import json
+import psycopg2
+import psycopg2.extras as extras
 
 def calendar_click(browser, to_search, class_name):
     
@@ -79,3 +81,32 @@ def get_stock_codes(path):
         
     return list(stock_dict.values())
     
+def load_data(df, params, col, table_col):
+
+    # Preprocess data
+    df = process_data(df)
+
+    # Prepare Loading data tuples
+    tuples = [tuple(x) for x in df[col].to_numpy()]
+
+    # Prepare Insert sql statement
+    table_col = ','.join(table_col)
+    query  = "INSERT INTO %s(%s) VALUES %%s" % ('stock.portfolio', table_col)
+
+    # Load data to postgres
+    with psycopg2.connect(**params) as conn:
+        cur = conn.cursor()
+        extras.execute_values(cur, query, tuples)
+
+
+def process_data(df):
+
+    try:
+        # Convert Shareholding to float
+        df['Shareholding'] = df['Shareholding'].apply(lambda x: float(x.replace(',','')))
+        df['Percentage'] = df['% of the total number of Issued Shares/ Warrants/ Units'].apply(lambda x: float(x.replace('%','')) / 100)
+        df['stock_code'] = df['stock_code'].apply(lambda x: ('00000' + str(x))[-5:])
+        return df
+    except Exception as e:
+        print(e)
+        return None
