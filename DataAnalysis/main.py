@@ -15,7 +15,7 @@ def main():
     df = load_data(data_path)
 
     # Convert df to sparse_matrix
-    sparse_matrix = convert_data_sparse_matrix(df)
+    sparse_matrix, row_ind_dict, col_ind_dict = convert_data_sparse_matrix(df)
 
     print('Total shareholding: ', sparse_matrix.sum())
 

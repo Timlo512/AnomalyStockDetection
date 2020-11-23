@@ -42,3 +42,67 @@ def load_data(data_path):
     df['stock_code'] = df['stock_code'].apply(lambda x: ('00000' + str(x))[-5:])
 
     return df
+
+def f_score(y_truth, y_pred, beta = 1):
+    
+    try:
+        # Run confusion_matrix
+        tn, fp, fn, tp = confusion_matrix(y_truth, y_pred).ravel()
+        
+        precision_value = precision(tp, fp)
+        recall_value = recall(tp, fn)
+        # print recall
+        print('True positive: {}, True Negative: {}, False Positive: {}, False Negative: {}'.format(tp, tn, fp, fn))
+        print('Precision is ', format(precision_value * 100, '.2f'), '%')
+        print('Recall is ', format(recall_value * 100, '.2f'), '%')
+        
+        return (1 + beta**2) * (precision_value * recall_value) / ((beta**2 * precision_value + recall_value))
+    except Exception as e:
+        print(e)
+        return None
+
+def precision(tp, fp):
+    return tp / (tp + fp)
+
+def recall(tp, fn):
+    return tp / (tp + fn)
+
+def get_truth_label(path, threshold = 0.3):
+    # Load dataset
+    df = pd.read_csv(path)
+
+    # preprocess the data in order to get a proper data structure
+    df = df.set_index('Unnamed: 0').transpose().dropna()
+    df = df.reset_index()
+    df['index'] = df['index'].apply(lambda x: retrieve_stock_code(x))
+    df = df.set_index('index')
+
+    # Define col_dim and empty dataframe
+    col_dim = len(df.columns)
+    temp = pd.DataFrame()
+
+    # Create a list of column name without the first element
+    first_dim = df.columns[0]
+    col_list = df.columns.to_list()
+    col_list.remove(first_dim)
+
+    for col in col_list:
+        # Assign the col to second_dim, as current date
+        second_dim = col
+
+        # Calculate the daily % change of stock price
+        temp[col] = (df[second_dim] - df[first_dim]) / df[first_dim]
+
+        # Assign the col to first dim, as previous date
+        first_dim = col
+
+    result = np.sum(temp > threshold, axis = 1)
+
+    return {stock_code:1 if count > 0 else 0 for stock_code, count in result.items()}
+
+def retrieve_stock_code(x):
+    d = re.search('[0-9]*', x)
+    if d:
+        return ('00000' + d.group(0))[-5:]
+    else:
+        return None
