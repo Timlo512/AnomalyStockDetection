@@ -3,14 +3,14 @@ Anomaly Stock Detection is a project to analyze the portfolio of shareholder for
 
 # Installtion
 Install the required packages and dependencies
-'''bash
+```
 pip install -r requirements.txt
-'''
+```
 
 # Jupyter Notebook
 To open Jupyter Notebook in **DataAnalysis**, execute the following code in terminal(Mac or Linux)/ Anaconda Prompt(Windows):
 
-<jupyter notebook --NotebookApp.iopub_data_rate_limit=1e10>
+```jupyter notebook --NotebookApp.iopub_data_rate_limit=1e10```
 
 then open **AnomalyStockDetection-Demo.ipynb** under **DataAnalysis**. 
 Please ensure **utils.py** is presented in **DataAnalysis**
@@ -21,7 +21,7 @@ https://www.anaconda.com/products/individual
 # Usage
 To run the prediction, move to the root directory of the folder, then execute the following code:
 
-<python main.py>
+```python main.py```
 
 the program will write the predicted anomaly stock code in the **prediction.log** file
 
