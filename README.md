@@ -3,7 +3,9 @@ Anomaly Stock Detection is a project to analyze the portfolio of shareholder for
 
 # Installtion
 Install the required packages and dependencies
-'''pip install -r requirements.txt'''
+'''bash
+pip install -r requirements.txt
+'''
 
 # Jupyter Notebook
 To open Jupyter Notebook in **DataAnalysis**, execute the following code in terminal(Mac or Linux)/ Anaconda Prompt(Windows):
