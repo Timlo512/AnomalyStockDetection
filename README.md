@@ -33,7 +33,7 @@ the program will write the predicted anomaly stock code in the **prediction.log*
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 # Contributors
-[Timothy] (https://github.com/Timlo512)
+[Timothy](https://github.com/Timlo512)
 
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
