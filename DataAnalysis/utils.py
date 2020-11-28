@@ -108,3 +108,28 @@ def retrieve_stock_code(x):
         return ('00000' + d.group(0))[-5:]
     else:
         return None
+
+def cluster_predict(label, min_pts = 'auto'):
+    """
+        Input: an array of clsutered label for each instance
+        return: an array of anomal label for each instance
+    """
+    try:
+        # Get Unqiue label and its counts
+        (unique, counts) = np.unique(label, return_counts = True)
+    
+        # Define minimum points that it should have in a cluster, if auto, it will take the min count
+        if min_pts == 'auto':
+            min_pts = min(counts)
+            print('Minimum points of a cluster among the clusters: ', min_pts)
+        else:
+            min_pts = int(min_pts)
+
+        # Prepare label_dict for mapping
+        label_dict = {label: 0 if count > min_pts else 1 for label, count in zip(unique, counts)}
+
+        # Map label_dict to label
+        return np.array([label_dict[i] for i in label])
+    except Exception as e:
+        print(e)
+        return None
