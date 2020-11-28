@@ -27,7 +27,7 @@ To run the prediction, move to the root directory of the folder, then execute th
 python main.py
 ```
 
-the program will write the predicted anomaly stock code on the **stdout**
+the program will print the predicted anomaly stock code on the **stdout**
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
