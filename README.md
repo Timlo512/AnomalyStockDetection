@@ -46,6 +46,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 SuJunjie <br>
 Cyrus <br>
 
+## Hyperlink
+https://github.com/Timlo512/AnomalyStockDetection
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
