@@ -2,7 +2,7 @@
 Anomaly Stock Detection is a project to analyze the portfolio of shareholder for each stock. It aims to cluster and detect whether some stock are anomaly from the main stream 
 
 # Software Requirement
-python=3.6.7
+python=3.6.7 <br>
 OS=Linux/macOS/Windows
 
 ## Installtion
