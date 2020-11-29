@@ -1,6 +1,29 @@
 # AnomalyStockDetection
 Anomaly Stock Detection is a project to analyze the portfolio of shareholder for each stock. It aims to cluster and detect whether some stock are anomaly from the main stream 
 
+## Directory
+.
++-- main.py
++-- README.md
++-- requirements.txt
++-- LICENSE
++-- DataAnalysis
+|   +-- utils.py
+|   +-- AnomalyStockDetection-Demo.ipynb
+|   +-- data
+|       +-- stock_port.csv
+|       +-- STOCK.csv
++-- StockScraper
+|   +-- main.py
+|   +-- Crawler
+|       +-- Helper.py
+|       +-- Login.py
+|   +-- reference
+|       +-- ListOfSecurities.csv
+|       +-- ListOfStock.json
+|   +-- sql
+|       +-- create_table.sql
+
 ## Software Requirement
 python=3.6.7 <br>
 OS=Linux/macOS/Windows
