@@ -40,11 +40,11 @@ the program will print the predicted anomaly stock code on the **stdout**
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Contributors
-[Timothy](https://github.com/Timlo512)
-[Clifford](https://github.com/cliffordman)
-[yaqicai101](https://github.com/yaqicai101)
-[SuJunjie]
-[Cyrus]
+[Timothy](https://github.com/Timlo512) <br>
+[Clifford](https://github.com/cliffordman) <br>
+[yaqicai101](https://github.com/yaqicai101) <br>
+SuJunjie <br>
+Cyrus <br>
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
