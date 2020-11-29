@@ -25,6 +25,8 @@ else:
 
 def main():
 
+    print('')
+    print('>> Preparing the matrix to fit into the models...')
     # Load dataset from data path
     df = load_data(data_path)
 
@@ -43,7 +45,7 @@ def main():
     prediction = cluster_predict(kmeans.labels_, min_pts = min_pts)
 
     print('')
-    print('>> The Anomaly Stock predicted by K-means Algorith')
+    print('>> The Anomaly Stock predicted by K-means Algorithm')
     result = [ind_row_dict[ind] for ind, predict in enumerate(list(prediction)) if predict == 1]
     print(result)
 
@@ -55,7 +57,7 @@ def main():
     prediction = cluster_predict(clustering.labels_, min_pts=min_pts)
 
     print('')
-    print('>> The Anomaly Stock predicted by DBSCAN Algorith')
+    print('>> The Anomaly Stock predicted by DBSCAN Algorithm')
     result = [ind_row_dict[ind] for ind, predict in enumerate(list(prediction)) if predict == 1]
     print(result)
 
@@ -71,7 +73,7 @@ def main():
     prediction = [1 if i == -1 else 0 for i in label]
 
     print('')
-    print('>> The Anomaly Stock predicted by Isolation Forest Algorith')
+    print('>> The Anomaly Stock predicted by Isolation Forest Algorithm')
     result = [ind_row_dict[ind] for ind, predict in enumerate(list(prediction)) if predict == 1]
     print(result)
 
